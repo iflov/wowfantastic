@@ -18,7 +18,7 @@ function fire_ajax_submit() {
         formArray[n['name']] = n['value']; // key - value
     });
 
-    var json =JSON.stringify(formArray)
+    var json =JSON.stringify(formArray);
     console.log(json);
     $.ajax({
         type: 'post', //등록
@@ -29,7 +29,7 @@ function fire_ajax_submit() {
         success: function (formArray) {
         	console.log("SUCCESS : ", formArray);
         	window.location.href = "/users"; //등록된 후  페이지로 이동
-        	
+        	//get방식으로 가는것이다
         },
         error: function (e) {
         	console.log("ERROR : ", e);        	

@@ -16,32 +16,20 @@
       <th scope="col">id</th>
       <th scope="col">name</th>
       <th scope="col">company</th>
-        <th scope="col">Update</th>
-          <th scope="col">Delete</th>
       
     </tr>
   </thead>
   <tbody>
-   <tr>
-   <form th:action="@{'/users/{id}'(id=${id})}" th:method="put">
-   <div th:object="${user}">
-		<th scope="row"><span th:text="${id}"></th>
-		<td><input type="text" name="name" th:field="*{name}"/></td>
-		<td><input type="text" name="company" th:field="*{company}"/></td>
-		<td><span th:text="${company}"></span></td>
-		<td><button type="submit" id="updateButton">update</button></td>
-	</div>
-	</form>
-	<td>
-	<form th:action="@{'/users/{id}'(id=${id})}" th:method="delete">
-	<input type="hidden" name="id" th:value="${id}"/>
-	<button type="submit" id="deleteButton">delete</button>
-	</form>
-	</td>
+   <tr th:each="user : ${users}">
+		<td scope="row">
+		<a th:href="@{/users/{id}(id=${user.id})}">
+		<span th:text="${user.id}"></span></td>
+		<td><span th:text="${user.name}"></span></td>
+		<td><span th:text="${user.company}"></span></td>
 	</tr>
   </tbody>
-  
 </table>
+
 
 <table>
 
