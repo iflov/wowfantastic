@@ -75,7 +75,7 @@ public class HomeController {
 		user.setName(userDetails.getName());// userDetails는 전송한 객체
 		user.setCompany(userDetails.getCompany());
 		userRepo.save(user);
-		return "users";
+		return "redirect:/users";
 	}	
 	@DeleteMapping("/users/{id}")//삭제
 	public String deleteUser(@PathVariable(value = "id") Long userId, Model model) {
