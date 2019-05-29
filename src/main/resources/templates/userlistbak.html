@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Registration Form</title>
+	<th:block th:include="fragments/header"></th:block>
+	<script type="text/javascript" src="js/main.js"></script>
+</head>
+
+<body>
+
+<th:block th:include="fragments/nav"></th:block>
+
+<div class="container" style="min-height: 500px">
+
+    <table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">id</th>
+      <th scope="col">name</th>
+      <th scope="col">company</th>
+      
+    </tr>
+  </thead>
+  <tbody>
+   <tr th:each="user : ${users}">
+		<td scope="row">
+		<a th:href="@{/users/{id}(id=${user.id})}">
+		<span th:text="${user.id}"></span></td>
+		<td><span th:text="${user.name}"></span></td>
+		<td><span th:text="${user.company}"></span></td>
+	</tr>
+  </tbody>
+</table>
+    
+</div>
+<th:block th:include="fragments/footer"></th:block>
+
+</body>
+</html>
