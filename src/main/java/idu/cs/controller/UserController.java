@@ -54,6 +54,12 @@ public class UserController {
 		model.addAttribute("users", userRepo.findAll());
 		return "userlist";
 	}
+	@GetMapping("/logout")
+	public String logoutUser(HttpSession session) {
+		session.removeAttribute("user");
+		//session.invalidate() -> 모든세션을 날려버린다 이방법도 가능하다
+		return "redirect:/";
+	}
 	@PostMapping("/users")
 	public String createUser(@Valid User user, Model model) {		
 		if(userRepo.save(user) != null)
